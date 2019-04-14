@@ -2,24 +2,46 @@ import React, { Component } from "react";
 import "./Style.css";
 import Logo from "./images/MDR_logo.png";
 
+let userCreds = [
+  {
+    UserID: "13",
+    Username: "ccambrini",
+    Password: "mdr965"
+  },
+  {
+    UserID: "32",
+    Username: "korsali",
+    Password: "kevin96"
+  },
+  {
+    UserID: "35",
+    Username: "dpolifrini",
+    Password: "mdr965"
+  },
+  {
+    UserID: "47",
+    Username: "lruiz",
+    Password: "mdr965"
+  },
+  {
+    UserID: "5",
+    Username: "mbordonaro",
+    Password: "mdr965"
+  },
+  {
+    UserID: "8",
+    Username: "bvezina",
+    Password: "mdr965"
+  }
+];
+
 class App extends Component {
   constructor() {
     super();
     this.state = {
       user: "",
-      userpw: "",
-      userCreds: [{}]
+      userpw: ""
     };
-  }
-
-  componentDidMount() {
-    fetch("http://localhost:4000/usercreds")
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          userCreds: res.data
-        });
-      });
   }
 
   updateUser(user) {
@@ -31,7 +53,6 @@ class App extends Component {
   }
 
   passwordValidation() {
-    const { userCreds } = this.state;
     const userDetails = userCreds.map(() => {
       const found = userCreds.find(e => e.Username === this.state.user);
 
